@@ -1,0 +1,11 @@
+$toolbar-max-height: 64px;
+$toolbar-min-height: 44px;
+$toolbar-mobile-height: 56px;
+
+.header{
+  display: flex;
+  width: 100%;
+  height: $toolbar-max-height;
+  min-height: $toolbar-min-height;
+  background-color: blue;
+}
