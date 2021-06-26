@@ -1,0 +1,17 @@
+<span>Folders</span>
+<ol >
+  <li *ngFor="let item of moviesAndFolders.folders">
+    <button mat-raised-button (click)="folderPicked(item)">
+      {{item}}
+    </button>
+    <hr>
+  </li>
+</ol>
+
+<br><br>
+<span>Movies</span>
+<ol >
+  <li *ngFor="let item of moviesAndFolders.movies">
+    {{item}}
+  </li>
+</ol>

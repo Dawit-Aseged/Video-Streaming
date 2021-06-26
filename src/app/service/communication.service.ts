@@ -12,9 +12,9 @@ export class CommunicationService {
   private moviesAndFolders = new Subject<MoviesAndFolders>();
   constructor(private httpClient: HttpClient) { }
 
-  public getMovies() {
+  public getMovies(url: string) {
     this.httpClient
-      .get<MoviesAndFoldersJSON>("http://localhost:8000/movies/")
+      .get<MoviesAndFoldersJSON>(`http://localhost:8000/movies/${url}`)
       .subscribe((information) => {
         var info = {
           movies: JSON.parse(information.movies),

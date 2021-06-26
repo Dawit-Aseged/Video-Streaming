@@ -4,29 +4,38 @@ import { Subscription } from 'rxjs';
 import { MoviesAndFolders } from "../movies.model";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class ContentComponent implements OnInit, OnDestroy {
 
-  private moviesAndFolders!: MoviesAndFolders;
+  public currentDirectory = "";
+  public moviesAndFolders: MoviesAndFolders = {
+    movies: [],
+    folders: []
+  };
   private moviesSub: Subscription;
   constructor(private commService: CommunicationService) {
     this.moviesSub = this.commService.getMoviesUpdated()
       .subscribe((movies) => {
         this.moviesAndFolders = movies;
-        console.log(this.moviesAndFolders);
       })
-  }
+    }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
     this.commService.getMovies("");
   }
 
   ngOnDestroy() {
     this.moviesSub.unsubscribe();
   }
+
+  public folderPicked(folder: string) {
+    this.commService.getMovies(this.currentDirectory+"/"+folder);
+    this.currentDirectory += folder;
+  }
+
 
 
 }
