@@ -14,7 +14,7 @@ export class CommunicationService {
 
   public getMovies(url: string) {
     this.httpClient
-      .get<MoviesAndFoldersJSON>(`http://localhost:8000/movies/${url}`)
+      .get<MoviesAndFoldersJSON>(`http://localhost:8000${url}`)
       .subscribe((information) => {
         var info = {
           movies: JSON.parse(information.movies),

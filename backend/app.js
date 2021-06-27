@@ -22,16 +22,15 @@ app.get("/", (req, res) => {
 
 function getPath(url) {
     var pathTakenArray = url.split("/").slice(2); // splits the url and removes the first empty string and the word "movies" or "video"
-
     //The following piece of code removes any string with only whitespace or null string
     var temp = [];
     for (var i = 0; i < pathTakenArray.length; i++) {
-        if (pathTakenArray[i] != "" && pathTakenArray[i].trim() != "")
-            temp.push(pathTakenArray[i]);
+      if (pathTakenArray[i] != "" && pathTakenArray[i].trim() != "")
+      temp.push(decodeURIComponent(pathTakenArray[i]));
     }
     pathTakenArray = temp;
 
-    var pathTakenString = decodeURIComponent(pathTakenArray.join(path.sep)); // Joins the array of paths and decodes the string
+    var pathTakenString = pathTakenArray.join(path.sep); // Joins the array of paths and decodes the string
     return pathTakenString;
 }
 app.get("/video/*", (req, res) => {
@@ -69,7 +68,6 @@ app.get("/video/*", (req, res) => {
 app.get("/movies/*", (req, res, next) => {
     //This middleware gets the list of movies and directories in the required path
     var folderPath = getPath(req.url);
-
     if (folderPath.includes("..")) res.status(401).send("Unautorized Access");
     // If the use tries to go back to a different directory, it stops it here
     else

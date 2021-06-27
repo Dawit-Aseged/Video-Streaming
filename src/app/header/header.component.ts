@@ -16,12 +16,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.moviesSub = this.commService.getMoviesUpdated()
       .subscribe((movies) => {
         this.moviesAndFolders = movies;
-        console.log(this.moviesAndFolders);
       })
   }
 
   ngOnInit(): void {
-    this.commService.getMovies("");
+    this.commService.getMovies("/movies/");
   }
 
   ngOnDestroy() {
