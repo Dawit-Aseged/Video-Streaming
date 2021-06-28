@@ -1,13 +1,17 @@
 <span>Folders</span>
-<ol >
-  <li *ngFor="let item of moviesAndFolders.folders">
-    <button mat-raised-button (click)="folderPicked(item)">
+    <!-- <button mat-raised-button (click)="folderPicked(item)">
       {{item}}
-    </button>
-    <mat-icon class="folder-icon">folder_open</mat-icon>
+    </button> -->
+    <div class="folder-container">
+    <div class="folder-icon" *ngFor="let item of moviesAndFolders.folders" (click)="folderPicked(item)">
+      <img src="../../assets/icons/folder_64.ico">
+      <div>
+        <span>{{item}}</span>
+      </div>
+    </div>
+  </div>
     <hr>
-  </li>
-</ol>
+
 
 <br><br>
 <span>Movies</span>
