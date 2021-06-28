@@ -31,6 +31,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   backClicked() {
     var prevRoute = this.commService.getPreviousDirectory(this.commService.getCurrentDirectory());
+    if(prevRoute.split("/")[1] != "movies"){
+      var routeArr = prevRoute.split("/");
+      routeArr.splice(0, 2);
+      prevRoute = "/" + routeArr.join("/")
+    }
     this.router.navigate([prevRoute])
   }
 

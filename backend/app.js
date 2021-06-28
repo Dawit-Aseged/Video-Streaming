@@ -42,7 +42,7 @@ app.get("/video/*", (req, res) => {
         if (path.extname(filePath) !== ".mp4") {
             res.status(400).send("File format must be .mp4");
         } else {
-            const videoPath = path.join("D:\\Videos\\Movies\\", filePath); // Path of the video
+            const videoPath = path.join("D:\\Videos\\", filePath); // Path of the video
             const videoSize = fs.statSync(videoPath).size; // Size of the video
 
             const CHUNK_SIZE = 20 ** 6; // The chunck of file that is sent at a time
@@ -58,7 +58,7 @@ app.get("/video/*", (req, res) => {
             };
 
             res.writeHead(206, headers);
-
+            console.log(headers);
             const videoStream = fs.createReadStream(videoPath, { start, end }); // The read stream
             videoStream.pipe(res); // The response
         }
