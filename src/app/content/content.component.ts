@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommunicationService } from '../service/communication.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
+
 
 import { MoviesAndFolders } from "../movies.model";
 
@@ -22,7 +24,9 @@ export class ContentComponent implements OnInit, OnDestroy {
 
   private moviesSub: Subscription;
 
-  constructor(private commService: CommunicationService, private router: Router) {
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+
+  constructor(private commService: CommunicationService, private router: Router, private breakpointObserver: BreakpointObserver) {
     this.moviesSub = this.commService.getMoviesUpdated()
       .subscribe((movies) => {
         this.moviesAndFolders = movies;
