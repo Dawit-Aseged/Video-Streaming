@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommunicationService } from '../service/communication.service';
 import { Subscription } from 'rxjs';
 import { MoviesAndFolders } from "../movies.model";
+import { Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private moviesAndFolders!: MoviesAndFolders;
   private moviesSub: Subscription;
-  constructor(private commService: CommunicationService) {
+  constructor(private commService: CommunicationService, private router: Router) {
     this.moviesSub = this.commService.getMoviesUpdated()
       .subscribe((movies) => {
         this.moviesAndFolders = movies;
@@ -27,5 +29,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.moviesSub.unsubscribe();
   }
 
+  backClicked() {
+    var prevRoute = this.commService.getPreviousDirectory(this.commService.getCurrentDirectory());
+    this.router.navigate([prevRoute])
+  }
 
 }

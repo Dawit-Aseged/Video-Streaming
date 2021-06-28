@@ -37,38 +37,11 @@ export class ContentComponent implements OnInit, OnDestroy {
       if (routeInfo instanceof NavigationEnd) {
         if (routeInfo.url != "/") {
           this.currentDirectory = decodeURIComponent(routeInfo.url); // Gets the current directory from the url
-          this.previousDirectory = this.getPreviousDirectory(this.currentDirectory); // Gets the previous directory from the current directory
+          this.previousDirectory = this.commService.getPreviousDirectory(this.currentDirectory); // Gets the previous directory from the current directory
           this.commService.getMovies(this.currentDirectory + "/"); // Fetches a list of movies
         }
       }
     });
-  }
-
-  // The following function gets the previous directory of the path it is given
-  getPreviousDirectory(currentDir: string) {
-    /**
-     * If the current directory is '/movies' (soon '/series', '/tutorials' and '/documentaries' will be added)
-     * then it returns that directory
-     */
-    if (currentDir == "/movies")
-      return currentDir;
-    // Splits the directory based on the separator
-    // TODO - The separator is not platform-specific. Change it to work on any platform (linux or mac)
-    var arrayOfDirs = currentDir.split("/");
-
-    /**
-     * If the last element of hte array is an empty string (this happens if the parameter passed
-     * has an extra '/' at the end), then it is popped until there is none left
-     */
-    if (arrayOfDirs[arrayOfDirs.length - 1] == "")
-      arrayOfDirs.pop();
-
-    // This pops the current directory, and the rest point to the last directory
-    arrayOfDirs.pop();
-
-    //Joins the array of directories to make it a path
-    // TODO - This is also not platform-specific
-    return arrayOfDirs.join("/");
   }
 
   ngOnInit(): void {
@@ -84,6 +57,8 @@ export class ContentComponent implements OnInit, OnDestroy {
     const newDir = this.currentDirectory + "/" + folder; // New Directory
     this.commService.getMovies(newDir); // Gets the new movies
     this.router.navigate([newDir]); // The router navigates to the new directory
+
+    this.commService.getCurrentDirectory();
   }
 
 

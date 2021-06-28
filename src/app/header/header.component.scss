@@ -9,3 +9,6 @@ $toolbar-mobile-height: 56px;
   min-height: $toolbar-min-height;
   background-color: blue;
 }
+.filler {
+  flex: 1 1 auto;
+}
