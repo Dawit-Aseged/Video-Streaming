@@ -19,7 +19,7 @@ export class PlayerComponent implements OnInit {
     var routeArr = this.router.url.split("/");
     routeArr.splice(0, 2);
 
-    this.moviePath = "http://localhost:8000/video/" + routeArr.join("/");
+    this.moviePath = "http://192.168.1.5:8000/video/" + routeArr.join("/");
   }
 
 }

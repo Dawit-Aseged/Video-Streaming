@@ -58,7 +58,6 @@ app.get("/video/*", (req, res) => {
             };
 
             res.writeHead(206, headers);
-            console.log(headers);
             const videoStream = fs.createReadStream(videoPath, { start, end }); // The read stream
             videoStream.pipe(res); // The response
         }
