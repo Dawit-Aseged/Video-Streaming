@@ -38,12 +38,7 @@ export class CommunicationService {
 
   // The following function gets the previous directory of the path it is given
   public getPreviousDirectory(currentDir: string) {
-    /**
-     * If the current directory is '/movies' (soon '/series', '/tutorials' and '/documentaries' will be added)
-     * then it returns that directory
-     */
-    if (currentDir == "/movies")
-      return currentDir;
+
     // Splits the directory based on the separator
     // TODO - The separator is not platform-specific. Change it to work on any platform (linux or mac)
     var arrayOfDirs = currentDir.split("/");

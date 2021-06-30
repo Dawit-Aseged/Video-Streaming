@@ -1,8 +1,12 @@
 <mat-toolbar color="primary" >
   <mat-toolbar-row class="toolbar">
-    <span>Video Streamer</span>
-    <div class="filler"></div>
-    <button mat-raised-button (click)="backClicked()">
+    <span style="margin: auto;">
+      <a routerLink="/">
+        Video Streamer
+      </a>
+      </span>
+    <div class="filler" *ngIf="backButtonVisible"></div>
+    <button mat-raised-button (click)="backClicked()" *ngIf="backButtonVisible">
       Back
     </button>
   </mat-toolbar-row>

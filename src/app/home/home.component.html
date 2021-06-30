@@ -1,1 +1,9 @@
-<p>home works!</p>
+<div class="choice">
+  <span>Choose Category</span>
+</div>
+<div class="buttonList" [ngClass]="{buttonListHandheld: (isHandset | async)!.matches}">
+  <button mat-raised-button color="primary" routerLink="/movies">Movies</button>
+  <button mat-raised-button color="primary">Series</button>
+  <button mat-raised-button color="primary">Documentaries</button>
+  <button mat-raised-button color="primary">Tutorials</button>
+</div>

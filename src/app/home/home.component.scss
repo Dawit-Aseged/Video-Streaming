@@ -1,0 +1,30 @@
+.choice {
+  width: 100%;
+  display: flex;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+  justify-content: center;
+  span {
+    font-size: 40px;
+  }
+}
+
+.buttonList{
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  button{
+    min-width: 150px;
+    height: 75px;
+    font-size: 2em;
+  }
+}
+
+.buttonListHandheld {
+  flex-direction: column;
+  button {
+    margin-bottom: 20px;
+    height: 75px;
+  }
+}
