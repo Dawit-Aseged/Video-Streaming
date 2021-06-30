@@ -1,5 +1,9 @@
+<div class="titleContainer">
+  <span class="title" [ngClass]="{titleHandheld: (isHandset | async)!.matches}">{{movieTitle}}</span>
+</div>
+
 <div class="container">
-  <video id="videoPlayer" width="650" controls>
+  <video id="videoPlayer" controls>
     <source [src]="moviePath" type="video/mp4" />
   </video>
 </div>

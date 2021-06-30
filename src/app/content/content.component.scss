@@ -77,3 +77,14 @@ $accent: mat-color($accentPalette);
   font-size: 32px;
 }
 
+.noneDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+}
+
+.noneSpan {
+  font-size: 28px;
+}

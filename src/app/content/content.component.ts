@@ -67,4 +67,7 @@ export class ContentComponent implements OnInit, OnDestroy {
     this.router.navigate(['/player'+ movieDir])
   }
 
+  public getArrayLength(array: any[]) {
+      return array.length;
+  }
 }

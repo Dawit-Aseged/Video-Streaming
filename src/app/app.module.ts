@@ -11,14 +11,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CommunicationService } from "./service/communication.service";
 import { ContentComponent } from './content/content.component';
-import { PlayerComponent } from './player/player.component'
+import { PlayerComponent } from './player/player.component';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ContentComponent,
-    PlayerComponent
+    PlayerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

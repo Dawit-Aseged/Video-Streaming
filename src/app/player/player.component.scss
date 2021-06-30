@@ -1,6 +1,27 @@
 .container {
   width: 100%;
-  background-color: blueviolet;
   display: flex;
   justify-content: center;
+  video {
+    width: 95%;
+    margin: 10px;
+    max-width: 850px;
+  }
+}
+
+.titleContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.title {
+  display: block;
+  font-size: 28px;
+  text-align: center;
+  padding: 15px;
+  word-break: break-word;
+}
+
+.titleHandheld {
+  font-size: 20px;
 }
